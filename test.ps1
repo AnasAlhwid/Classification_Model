@@ -29,7 +29,7 @@ try {
     Write-Host "$moduleName module EXTRACTED!!."
 
     # Move the extracted folder to the PowerShell modules path
-    Move-Item -Path (Join-Path -Path $extractPath) -Destination $modulePath
+    Move-Item -Path $extractPath -Destination $modulePath
 
     # Clean up temporary files
     Remove-Item $tempZipPath
