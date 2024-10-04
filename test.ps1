@@ -1,7 +1,7 @@
 $ErrorActionPreference = 'Stop'
 
 # Define variables
-$moduleName = 'qatam'
+$moduleName = 'Classification_Model'
 
 $repoUrl = 'https://github.com/AnasAlhwid/Classification_Model'
 
