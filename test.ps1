@@ -3,9 +3,7 @@ $ErrorActionPreference = 'Stop'
 # Define variables
 $moduleName = 'test'
 
-$repoUrl = 'https://github.com/AnasAlhwid/Classification_Model'
-
-$zipUrl = "$repoUrl/archive/main.zip"
+$zipUrl = 'https://github.com/AnasAlhwid/Classification_Model/archive/refs/heads/main.zip'
 
 $modulePath = Join-Path -Path $env:USERPROFILE -ChildPath "Documents\PowerShell\Modules"
 
@@ -16,9 +14,6 @@ if (-not (Test-Path -Path $modulePath)) {
     New-Item -Path $modulePath -ItemType Directory -Force
     Write-Host "Created directory: $modulePath"
 }
-
-# Define the target installation path for the qatam module
-$installPath = Join-Path -Path $modulePath -ChildPath $moduleName
 
 $tempZipPath = Join-Path -Path $env:TEMP -ChildPath "$moduleName.zip"
 $extractPath = Join-Path -Path $env:TEMP -ChildPath "$moduleName-extracted"
@@ -31,8 +26,10 @@ try {
     Add-Type -AssemblyName 'System.IO.Compression.FileSystem'
     [System.IO.Compression.ZipFile]::ExtractToDirectory($tempZipPath, $extractPath)
 
+    Write-Host "$moduleName module EXTRACTED!!."
+
     # Move the extracted folder to the PowerShell modules path
-    Move-Item -Path (Join-Path -Path $extractPath -ChildPath "$moduleName-main") -Destination $installPath
+    Move-Item -Path (Join-Path -Path $extractPath -ChildPath "$moduleName-main") -Destination $modulePath
 
     # Clean up temporary files
     Remove-Item $tempZipPath
@@ -44,6 +41,9 @@ catch {
     Write-Host "Failed to download or extract the ZIP file from GitHub. Exiting..."
 }
 
+# Define the target installation path for the qatam module
+$installPath = Join-Path -Path $modulePath -ChildPath $moduleName
+
 # Import the module
 Import-Module $installPath -Force
 
@@ -54,3 +54,5 @@ if (Get-Module -Name $moduleName -ListAvailable) {
 else {
     Write-Host "Failed to import the $moduleName module." -ForegroundColor Red
 }
+
+Invoke-WebRequest -Uri "https://github.com/AnasAlhwid/Classification_Model/archive/refs/heads/main.zip" -OutFile "$env:TEMP\test.zip"
