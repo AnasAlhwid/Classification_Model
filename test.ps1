@@ -1,7 +1,7 @@
 $ErrorActionPreference = 'Stop'
 
 # Define variables
-$moduleName = 'test'
+$moduleName = 'Classification_Model'
 
 $zipUrl = 'https://github.com/AnasAlhwid/Classification_Model/archive/refs/heads/main.zip'
 
@@ -29,7 +29,7 @@ try {
     Write-Host "$moduleName module EXTRACTED!!."
 
     # Move the extracted folder to the PowerShell modules path
-    Move-Item -Path $extractPath -Destination $modulePath
+    Move-Item -Path (Join-Path -Path $extractPath -ChildPath "$moduleName-main") -Destination $modulePath
 
     # Clean up temporary files
     Remove-Item $tempZipPath
@@ -54,5 +54,3 @@ if (Get-Module -Name $moduleName -ListAvailable) {
 else {
     Write-Host "Failed to import the $moduleName module." -ForegroundColor Red
 }
-
-Invoke-WebRequest -Uri "https://github.com/AnasAlhwid/Classification_Model/archive/refs/heads/main.zip" -OutFile "$env:TEMP\test.zip"
