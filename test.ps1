@@ -1,7 +1,7 @@
 $ErrorActionPreference = 'Stop'
 
 # Define variables
-$moduleName = 'Classification_Model'
+$moduleName = 'test'
 
 $repoUrl = 'https://github.com/AnasAlhwid/Classification_Model'
 
