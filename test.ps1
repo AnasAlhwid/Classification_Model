@@ -5,7 +5,7 @@ $moduleName = 'test'
 
 $repoUrl = 'https://github.com/AnasAlhwid/Classification_Model'
 
-$zipUrl = "$repoUrl/archive/refs/heads/main.zip"
+$zipUrl = "$repoUrl/archive/main.zip"
 
 $modulePath = Join-Path -Path $env:USERPROFILE -ChildPath "Documents\PowerShell\Modules"
 
