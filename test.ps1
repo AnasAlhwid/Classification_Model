@@ -44,6 +44,8 @@ catch {
 # Define the target installation path for the qatam module
 $installPath = Join-Path -Path $modulePath -ChildPath "$moduleName-main"
 
+Write-Host $installPath
+
 # Import the module
 Import-Module $installPath -Force
 
