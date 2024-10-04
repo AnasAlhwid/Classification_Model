@@ -42,7 +42,7 @@ catch {
 }
 
 # Define the target installation path for the qatam module
-$installPath = Join-Path -Path $modulePath -ChildPath "$moduleName-main"
+$installPath = Join-Path -Path $modulePath -ChildPath "$moduleName-main\test"
 
 Write-Host $installPath
 
