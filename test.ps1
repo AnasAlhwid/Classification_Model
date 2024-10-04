@@ -42,7 +42,6 @@ try {
 }
 catch {
     Write-Host "Failed to download or extract the ZIP file from GitHub. Exiting..."
-    exit 1
 }
 
 # Import the module
@@ -55,4 +54,3 @@ if (Get-Module -Name $moduleName -ListAvailable) {
 else {
     Write-Host "Failed to import the $moduleName module." -ForegroundColor Red
 }
-
