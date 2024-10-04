@@ -42,7 +42,7 @@ catch {
 }
 
 # Define the target installation path for the qatam module
-$installPath = Join-Path -Path $modulePath -ChildPath $moduleName
+$installPath = Join-Path -Path $modulePath -ChildPath "$moduleName-main"
 
 # Import the module
 Import-Module $installPath -Force
@@ -54,3 +54,5 @@ if (Get-Module -Name $moduleName -ListAvailable) {
 else {
     Write-Host "Failed to import the $moduleName module." -ForegroundColor Red
 }
+
+# Invoke-WebRequest -Uri "https://github.com/AnasAlhwid/Classification_Model/archive/refs/heads/main.zip" -OutFile "$env:TEMP\test.zip"
